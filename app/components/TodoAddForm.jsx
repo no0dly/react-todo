@@ -15,6 +15,8 @@ var TodoAddForm = React.createClass({
 
             this.refs.newTodo.value = '';
             this.props.onAddTodo(update);
+        } else {
+            this.refs.newTodo.focus();
         }
     },
     render() {

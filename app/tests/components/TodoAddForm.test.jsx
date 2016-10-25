@@ -10,4 +10,33 @@ describe('Todo add form component',() => {
     it('Should exist', () => {
         expect(TodoAddForm).toExist();
     });
+
+    it('Should call onAddTodo prop with valid data', () => {
+        var spy = expect.createSpy();
+        var addTodo = TestUtils.renderIntoDocument(<TodoAddForm onAddTodo={spy} />);
+        var $el = $(ReactDOM.findDOMNode(addTodo));
+
+        addTodo.refs.newTodo.value = '123';
+
+        TestUtils.Simulate.submit($el.closest('form')[0]);
+
+        expect(spy).toHaveBeenCalledWith(
+            {
+                name:'123',
+                status: 'undone'
+            }
+        );
+    });
+
+    it('Should not call onAddTodo prop with invalid data', () => {
+        var spy = expect.createSpy();
+        var addTodo = TestUtils.renderIntoDocument(<TodoAddForm onAddTodo={spy} />);
+        var $el = $(ReactDOM.findDOMNode(addTodo));
+
+        addTodo.refs.newTodo.value = '';
+
+        TestUtils.Simulate.submit($el.closest('form')[0]);
+
+        expect(spy).toNotHaveBeenCalled();
+    });
 });

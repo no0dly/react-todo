@@ -6,7 +6,7 @@ var TodoList = require('TodoList');
 var Todo = React.createClass ({
     getInitialState() {
         return {
-            todoList: [
+            todos: [
                 {
                     id: '0',
                     name: 'Walk with dog',
@@ -21,11 +21,13 @@ var Todo = React.createClass ({
         }
     },
     newTodoHandler(update) {
-        var newtodos = this.state.todoList.push(update);
-        this.setState({todos:newtodos});
+        debugger;
+        var newTodos = this.state.todos;
+        newTodos.push(update);
+        this.setState({todos:newTodos});
     },
     render() {
-        var {todoList} = this.state;
+        var {todos} = this.state;
         return (
             <div className="row todo-app">
 
@@ -33,7 +35,7 @@ var Todo = React.createClass ({
 
                 <div className="small-centered medium-8 large-6 todo-app__wrap">
                     <TodoSearch/>
-                    <TodoList todoList={todoList} />
+                    <TodoList todos={todos} />
                     <TodoAddForm onAddTodo={this.newTodoHandler}/>
                 </div>
             </div>

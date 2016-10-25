@@ -25,7 +25,7 @@ describe('TodoList component',() => {
                 status: "undone"
             }
         ];
-        var todoList = TestUtils.renderIntoDocument(<TodoList todoList={todos}/>);
+        var todoList = TestUtils.renderIntoDocument(<TodoList todos={todos}/>);
         var  todosComponents = TestUtils.scryRenderedComponentsWithType(todoList, TodoItem);
 
         expect(todosComponents.length).toBe(todos.length);

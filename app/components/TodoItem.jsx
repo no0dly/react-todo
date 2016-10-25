@@ -9,7 +9,7 @@ var TodoItem = React.createClass({
         var {name, status} = this.props;
         var key = this.key;
         return (
-            <li className="clearfix"  id={key} onClick={this.todoAction}>
+            <li className="clearfix" id={key} onClick={this.todoAction}>
                 <div className="large-1 medium-1 small-1 columns">
                     <input type="checkbox" />
                 </div>

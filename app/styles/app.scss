@@ -1,0 +1,11 @@
+//base styles
+@import "base/_variables";
+
+//foundation
+@import "base/foundation-settings";
+@import "foundation";
+@include foundation-everything;
+
+//components
+@import "components/todo";
+@import "components/todoList";

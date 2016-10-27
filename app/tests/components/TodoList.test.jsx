@@ -17,12 +17,12 @@ describe('TodoList component',() => {
             {
                 id: "0",
                 name: "bla bla",
-                status: "undone"
+                completed: false
             },
             {
                 id: "1",
                 name: "bla bla2",
-                status: "undone"
+                completed: false
             }
         ];
         var todoList = TestUtils.renderIntoDocument(<TodoList todos={todos}/>);

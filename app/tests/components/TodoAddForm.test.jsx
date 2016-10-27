@@ -23,7 +23,7 @@ describe('Todo add form component',() => {
         expect(spy).toHaveBeenCalledWith(
             {
                 name:'123',
-                status: 'undone'
+                completed: false
             }
         );
     });

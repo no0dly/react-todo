@@ -5,13 +5,12 @@ var TodoAddForm = React.createClass({
         e.preventDefault();
 
         var newTodo = this.refs.newTodo.value;
-        var newStatus = 'undone';
         var update = {};
 
         if( newTodo.length > 0 ) {
 
             update.name = newTodo;
-            update.status = newStatus;
+            update.completed = false;
 
             this.refs.newTodo.value = '';
             this.props.onAddTodo(update);

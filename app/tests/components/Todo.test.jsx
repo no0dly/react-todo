@@ -10,4 +10,19 @@ describe('Todo main component',() => {
     it('Should exist', () => {
         expect(Todo).toExist();
     });
+
+    it('Should add todo to the todos state on handleAddTodo', () => {
+        var newTodo = {
+            name: 'test text',
+            completed: false
+        };
+        var todoApp = TestUtils.renderIntoDocument(<Todo />);
+
+        todoApp.setState({
+            todos:[]
+        });
+        todoApp.newTodoHandler(newTodo);
+
+        expect(todoApp.state.todos[0].name).toBe(newTodo.name);
+    });
 });

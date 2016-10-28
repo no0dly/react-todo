@@ -25,4 +25,21 @@ describe('Todo main component',() => {
 
         expect(todoApp.state.todos[0].name).toBe(newTodo.name);
     });
+
+    it('should toggle completed value when handleToggle called', () => {
+        var todoData = {
+            id: 11,
+            name: 'Some name',
+            completed: false
+        }
+
+        var todoApp = TestUtils.renderIntoDocument(<Todo/>);
+
+        todoApp.setState({
+            todos: [todoData]
+        });
+        expect(todoApp.state.todos[0].completed).toBe(false);
+        todoApp.handleToggle(11);
+        expect(todoApp.state.todos[0].completed).toBe(true);
+    });
 });

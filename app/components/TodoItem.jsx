@@ -10,7 +10,7 @@ var TodoItem = React.createClass({
         var {id, name, completed} = this.props;
         var key = this.key;
         return (
-            <li className="clearfix" id={id} onClick={this.onToggle}>
+            <li className="clearfix" key={id} onClick={this.onToggle}>
                 <div className="large-1 medium-1 small-1 columns">
                     <input type="checkbox" ref="checkStatus" checked={completed}/>
                 </div>

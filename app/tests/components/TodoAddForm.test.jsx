@@ -18,7 +18,7 @@ describe('Todo add form component',() => {
 
         addTodo.refs.newTodo.value = '123';
 
-        TestUtils.Simulate.submit($el.closest('form')[0]);
+        TestUtils.Simulate.submit($el.find('form')[0]);
 
         expect(spy).toHaveBeenCalledWith('123');
     });
@@ -30,7 +30,7 @@ describe('Todo add form component',() => {
 
         addTodo.refs.newTodo.value = '';
 
-        TestUtils.Simulate.submit($el.closest('form')[0]);
+        TestUtils.Simulate.submit($el.find('form')[0]);
 
         expect(spy).toNotHaveBeenCalled();
     });

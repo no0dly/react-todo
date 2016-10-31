@@ -9,7 +9,7 @@ var TodoItem = React.createClass({
     },
     render() {
         var {id, name, completed, date, completedAt} = this.props;
-        var key = this.key;
+        var todoClassName = completed ? 'todoItem done' : 'todoItem';
         var renderDate = function() {
             var text,
                 timestamp;
@@ -25,13 +25,13 @@ var TodoItem = React.createClass({
             return  text + moment.unix(timestamp).format('MMM D, YY @ h:mm a');;
         }
         return (
-            <li className="clearfix" key={id} onClick={this.onToggle}>
-                <div className="large-1 medium-1 small-1 columns">
+            <li className={todoClassName} onClick={this.onToggle}>
+                <div>
                     <input type="checkbox" ref="checkStatus" checked={completed}/>
                 </div>
                 <label className="large-11 medium-11 small-11 columns">
-                    {name}
-                    <small>{renderDate()}</small>
+                    <p>{name}</p>
+                    <p className="todoItem__date">{renderDate()}</p>
                 </label>
             </li>
         );

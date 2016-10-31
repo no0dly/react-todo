@@ -4,7 +4,10 @@
 
 .todo-app__wrap {
     background: $appBg;
-    padding: 1rem;
+    padding: 0;
+    border: 1px solid $lgrey-border;
+    border-radius: 5px;
+    margin-bottom: 2rem;
 }
 
 .todo-app__title {

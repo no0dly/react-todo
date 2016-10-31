@@ -20,12 +20,7 @@ describe('Todo add form component',() => {
 
         TestUtils.Simulate.submit($el.closest('form')[0]);
 
-        expect(spy).toHaveBeenCalledWith(
-            {
-                name:'123',
-                completed: false
-            }
-        );
+        expect(spy).toHaveBeenCalledWith('123');
     });
 
     it('Should not call onAddTodo prop with invalid data', () => {

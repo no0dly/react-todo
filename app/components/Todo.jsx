@@ -1,5 +1,6 @@
 var React = require('react');
 var uuid = require('node-uuid');
+var moment = require('moment');
 
 var TodoSearch = require('TodoSearch');
 var TodoAddForm = require('TodoAddForm');
@@ -24,12 +25,17 @@ var Todo = React.createClass ({
             searchTodos: searchTodos.toLowerCase()
         });
     },
-    newTodoHandler(update) {
-        update.id = uuid();
+    newTodoHandler(name) {
         this.setState({
             todos: [
                 ...this.state.todos,
-                update
+                {
+                    id: uuid(),
+                    name: name,
+                    completed: false,
+                    date: moment().unix(),
+                    completedAt: undefined
+                }
             ]
 
         });
@@ -39,6 +45,7 @@ var Todo = React.createClass ({
         var updatedTodos = this.state.todos.map( (todo) => {
             if ( todo.id == id ) {
                 todo.completed = !todo.completed;
+                todo.completedAt = todo.completed ? moment().unix() : undefined;
             }
             return todo;
         });

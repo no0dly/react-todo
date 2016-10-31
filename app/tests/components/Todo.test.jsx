@@ -12,25 +12,25 @@ describe('Todo main component',() => {
     });
 
     it('Should add todo to the todos state on handleAddTodo', () => {
-        var newTodo = {
-            name: 'test text',
-            completed: false
-        };
+        var newName = 'test text';
         var todoApp = TestUtils.renderIntoDocument(<Todo />);
 
         todoApp.setState({
             todos:[]
         });
-        todoApp.newTodoHandler(newTodo);
+        todoApp.newTodoHandler(newName);
 
-        expect(todoApp.state.todos[0].name).toBe(newTodo.name);
+        expect(todoApp.state.todos[0].name).toBe(newName);
+        expect(todoApp.state.todos[0].date).toBeA('number');
     });
 
     it('should toggle completed value when handleToggle called', () => {
         var todoData = {
             id: 11,
             name: 'Some name',
-            completed: false
+            completed: false,
+            date: 0,
+            completedAt: undefined
         }
 
         var todoApp = TestUtils.renderIntoDocument(<Todo/>);
@@ -41,5 +41,27 @@ describe('Todo main component',() => {
         expect(todoApp.state.todos[0].completed).toBe(false);
         todoApp.handleToggle(11);
         expect(todoApp.state.todos[0].completed).toBe(true);
+
+        expect(todoApp.state.todos[0].completedAt).toBeA('number');
+    });
+
+    it('Should remove completedAt when toggle from true to false', () => {
+        var todoData = {
+            id: 11,
+            name: 'Some name',
+            completed: true,
+            date: 0,
+            completedAt: 200
+        }
+
+        var todoApp = TestUtils.renderIntoDocument(<Todo/>);
+
+        todoApp.setState({
+            todos: [todoData]
+        });
+
+        todoApp.handleToggle(11);
+
+        expect(todoApp.state.todos[0].completedAt).toNotExist();
     });
 });

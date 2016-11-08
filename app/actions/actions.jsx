@@ -5,16 +5,16 @@ export var searchText = (searchText) => {
     }
 }
 
+export var toggleShowCompleted = () => {
+    return {
+        type: 'TOGGLE_SHOW_COMPLETED'
+    }
+}
+
 export var addTodo  = (newTodo) => {
     return {
         type: 'ADD_TODO',
         newTodo
-    }
-}
-
-export var toggleShowCompleted = () => {
-    return {
-        type: 'TOGGLE_SHOW_COMPLETED'
     }
 }
 

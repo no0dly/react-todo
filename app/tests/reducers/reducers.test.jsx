@@ -16,13 +16,13 @@ describe('Reducers',() => {
         });
     });
 
-    describe('showCompledReducer',() => {
+    describe('showCompletedReducer',() => {
         it('Should toggle false to true', () => {
             var action = {
                 type: 'TOGGLE_SHOW_COMPLETED'
             };
 
-            var res = reducers.showCompledReducer(df(''), df(action));
+            var res = reducers.showCompletedReducer(df(''), df(action));
 
             expect(res).toEqual(true);
         });

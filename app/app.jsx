@@ -10,10 +10,6 @@ store.subscribe(()=> {
     console.log('NewState ', store.getState());
 });
 
-store.dispatch(actions.addTodo('Pipi'));
-store.dispatch(actions.searchText('Pipi'));
-store.dispatch(actions.toggleShowCompleted());
-
 $(document).foundation();
 
 require('style!css!sass!AppCss')

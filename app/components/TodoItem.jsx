@@ -6,8 +6,8 @@ var actions = require('actions');
 export var TodoItem = React.createClass({
 
     onToggle(e) {
-        var id =this.props.id;
-        this.props.dispatch(actions.toggleTodo(id));
+        var {id, dispatch} = this.props;
+        dispatch(actions.toggleTodo(id));
     },
     render() {
         var {id, name, completed, date, completedAt} = this.props;

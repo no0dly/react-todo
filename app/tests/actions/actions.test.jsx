@@ -45,4 +45,23 @@ describe('Action tests',() => {
         expect(res).toEqual(action);
     });
 
+    it('Should generate addTodos action object', () => {
+        var todos = [{
+            id: 1,
+            name: 'anithing',
+            completed: false,
+            completedAt: undefined,
+            date: 1000
+        }];
+
+        var action = {
+            type: 'ADD_TODOS',
+            todos
+        };
+
+        var res = actions.addTodos(todos);
+
+        expect(res).toEqual(action);
+    });
+
 });

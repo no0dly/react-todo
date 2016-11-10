@@ -32,7 +32,7 @@ export var todoReducer = (state = [], action) => {
                     date: moment().unix(),
                     completedAt: undefined
                 }
-            ]
+            ];
 
         case 'TOGGLE_TODO':
             return state.map( (todo) => {
@@ -48,6 +48,12 @@ export var todoReducer = (state = [], action) => {
                     return todo;
                 }
             });
+
+        case 'ADD_TODOS':
+            return [
+                ...state,
+                ...action.todos
+            ];
         default:
             return state;
     }

@@ -7,7 +7,7 @@ var TestUtils =  require('react-addons-test-utils');
 
 import {configure} from 'configureStore';
 import ConnectedTodoList, {TodoList} from 'TodoList';
-import CompletedTodoItem, {TodoItem} from 'TodoItem';
+import ConnectedTodoItem, {TodoItem} from 'TodoItem';
 
 describe('TodoList component',() => {
     it('Should exist', () => {
@@ -40,8 +40,7 @@ describe('TodoList component',() => {
             </Provider>
         );
         var todoList = TestUtils.scryRenderedComponentsWithType(provider, ConnectedTodoList)[0];
-        var todosComponents = TestUtils.scryRenderedComponentsWithType(todoList, CompletedTodoItem);
-
+        var todosComponents = TestUtils.scryRenderedComponentsWithType(todoList, ConnectedTodoItem);
         expect(todosComponents.length).toBe(todos.length);
     });
 

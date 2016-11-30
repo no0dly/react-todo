@@ -24,7 +24,7 @@ export var TodoItem = React.createClass({
                 timestamp = date;
             }
 
-            return  text + moment.unix(timestamp).format('MMM D, YY @ h:mm a');;
+            return  text + moment.unix(timestamp).format('MMM D, YY @ h:mm a');
         }
         return (
             <li className={todoClassName} onClick={this.onToggle}>

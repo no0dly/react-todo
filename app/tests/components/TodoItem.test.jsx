@@ -6,6 +6,8 @@ var TestUtils =  require('react-addons-test-utils');
 
 var {TodoItem} = require('TodoItem');
 
+import * as actions from 'actions';
+
 describe('TodoItem component',() => {
     it('Should exist', () => {
         expect(TodoItem).toExist();
@@ -18,16 +20,13 @@ describe('TodoItem component',() => {
             completed: true
         };
         var spy = expect.createSpy();
-
+        var action = actions.startToggleTodo(todoData.id, !todoData.completed);
         var todoItem = TestUtils.renderIntoDocument(<TodoItem {...todoData} dispatch={spy} />);
 
         var $el = $(ReactDOM.findDOMNode(todoItem));
 
         TestUtils.Simulate.click($el[0]);
 
-        expect(spy).toHaveBeenCalledWith({
-            type: 'TOGGLE_TODO',
-            id: todoData.id
-        });
+        expect(spy).toHaveBeenCalledWith(action);
     });
 });

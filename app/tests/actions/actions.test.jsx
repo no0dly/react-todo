@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 
 import expect from 'expect';
 import * as actions from 'actions';
+import firebase, {firebaseRef} from 'app/firebase';
 
 
 var createMockStore = configureMockStore([thunk]);
@@ -44,13 +45,17 @@ describe('Action tests',() => {
         expect(res).toEqual(action);
     });
 
-    it('Should generate toggleTodo action', () => {
-        var action = {
-            type: 'TOGGLE_TODO',
-            id: '2'
-        }
+    it('Should generate updateTodo action', () => {
+        var updates = {completed: false};
 
-        var res = actions.toggleTodo(action.id);
+        var action = {
+            type: 'UPDATE_TODO',
+            id: '122',
+            updates
+        };
+
+
+        var res = actions.updateTodo(action.id, action.updates);
 
         expect(res).toEqual(action);
     });
@@ -85,5 +90,40 @@ describe('Action tests',() => {
             });
             done();
         }).catch(done);
+    });
+
+    describe('Tests with firebase',() => {
+        var testTodoRef;
+        beforeEach((done) => {
+            testTodoRef = firebaseRef.child('todos').push();
+
+            testTodoRef.set({
+                name: 'Some text',
+                completed: false,
+                createdAt: 123242
+            }).then(()=> done());
+        });
+
+        afterEach((done) => {
+            testTodoRef.remove().then(()=>done());
+        });
+        it('Should toggle todo and dispatch UPDATE_TODO action', (done) => {
+            const store = createMockStore({});
+            const action = actions.startToggleTodo(testTodoRef.key, true);
+
+            store.dispatch(action).then(() => {
+                const mockActions = store.getActions();
+
+                expect(mockActions[0]).toInclude({
+                    type: 'UPDATE_TODO',
+                    id: testTodoRef.key
+                });
+
+                expect(mockActions[0].updates).toInclude({
+                    completed: true
+                });
+                done();
+            }, done);
+        });
     });
 });

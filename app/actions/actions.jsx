@@ -9,6 +9,7 @@ export var searchText = (searchText) => {
     }
 }
 
+
 export var toggleShowCompleted = () => {
     return {
         type: 'TOGGLE_SHOW_COMPLETED'
@@ -48,9 +49,26 @@ export var addTodos = (todos) => {
     };
 };
 
-export var toggleTodo = (id) => {
+export var updateTodo = (id, updates) => {
     return {
-        type: 'TOGGLE_TODO',
-        id
+        type: 'UPDATE_TODO',
+        id,
+        updates
     };
 };
+
+
+export var startToggleTodo = (id, completed) => {
+    return (dispatch, getState) => {
+        var todoRef = firebaseRef.child(`todos/${id}`);
+        var updates = {
+            completed,
+            completedAt: completed ? moment().unix() : null
+        }
+
+        debugger;
+        return todoRef.update(updates).then(function() {
+            dispatch(updateTodo(id, updates));
+        });
+    }
+}

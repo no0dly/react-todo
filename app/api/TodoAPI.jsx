@@ -1,26 +1,29 @@
 var $ = require('jQuery');
 
 module.exports = {
-    setTodos: function(todos) {
-        if($.isArray(todos)) {
-            localStorage.setItem('todos', JSON.stringify(todos));
+    //localStorage
+    // setTodos: function(todos) {
+    //     if($.isArray(todos)) {
+    //         localStorage.setItem('todos', JSON.stringify(todos));
+    //
+    //         return todos;
+    //     }
+    // },
+    //
+    // getTodos: function () {
+    //     var stringTodos = localStorage.getItem('todos', todos);
+    //     var todos = [];
+    //
+    //     try {
+    //         todos = JSON.parse(stringTodos);
+    //     } catch(e) {
+    //
+    //     }
+    //
+    //     return $.isArray(todos) ? todos : [];
+    // },
 
-            return todos;
-        }
-    },
 
-    getTodos: function () {
-        var stringTodos = localStorage.getItem('todos', todos);
-        var todos = [];
-
-        try {
-            todos = JSON.parse(stringTodos);
-        } catch(e) {
-
-        }
-
-        return $.isArray(todos) ? todos : [];
-    },
 
     filterTodo: function (todos, showCompleted, searchTodos) {
         var filteredTodos = todos;
@@ -30,12 +33,10 @@ module.exports = {
             return !todo.completed || showCompleted;
         });
         //filtered by search field
-        if ( searchTodos.length > 0 ) {
-            filteredTodos = filteredTodos.filter( (todo) => {
-                var text = todo.name.toLowerCase();
-                return text.indexOf( searchTodos ) !== -1 ? true : false;
-            });
-        }
+        filteredTodos = filteredTodos.filter( (todo) => {
+            var text = todo.name.toLowerCase();
+            return text.indexOf( searchTodos ) !== -1 ? true : false;
+        });
 
         //sort todos not completed first
         filteredTodos.sort((a,b) => {

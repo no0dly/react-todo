@@ -10,7 +10,7 @@ module.exports = {
         //filtered by search field
         filteredTodos = filteredTodos.filter( (todo) => {
             var text = todo.name.toLowerCase();
-            return text.indexOf( searchTodos ) !== -1 ? true : false;
+            return text.indexOf( searchTodos.toLowerCase() ) !== -1 ? true : false;
         });
 
         //sort todos not completed first

@@ -41,7 +41,7 @@ describe('TodoList component',() => {
         );
         var todoList = TestUtils.scryRenderedComponentsWithType(provider, ConnectedTodoList)[0];
         var todosComponents = TestUtils.scryRenderedComponentsWithType(todoList, ConnectedTodoItem);
-        expect(todosComponents.length).toB(todos.length);
+        expect(todosComponents.length).toBe(todos.length);
     });
 
     it('should render message if no todos', () => {

@@ -1,29 +1,4 @@
-var $ = require('jQuery');
-
 module.exports = {
-    //localStorage
-    // setTodos: function(todos) {
-    //     if($.isArray(todos)) {
-    //         localStorage.setItem('todos', JSON.stringify(todos));
-    //
-    //         return todos;
-    //     }
-    // },
-    //
-    // getTodos: function () {
-    //     var stringTodos = localStorage.getItem('todos', todos);
-    //     var todos = [];
-    //
-    //     try {
-    //         todos = JSON.parse(stringTodos);
-    //     } catch(e) {
-    //
-    //     }
-    //
-    //     return $.isArray(todos) ? todos : [];
-    // },
-
-
 
     filterTodo: function (todos, showCompleted, searchTodos) {
         var filteredTodos = todos;

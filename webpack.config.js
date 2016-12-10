@@ -10,6 +10,7 @@ try {
 
 }
 
+console.log(process.env.API_KEY);
 module.exports = {
     entry: [
         'script!jquery/dist/jquery.min.js',

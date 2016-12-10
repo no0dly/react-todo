@@ -9,8 +9,7 @@ try {
 } catch(e) {
 
 }
-console.log(process.env.NODE_ENV);
-console.log(process.env.API_KEY);
+
 module.exports = {
     entry: [
         'script!jquery/dist/jquery.min.js',

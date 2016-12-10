@@ -10,6 +10,9 @@ var Todo = React.createClass ({
     render() {
         return (
             <div className="todo-app">
+                <div className="page-actions">
+                    <a href="#">Logout</a>
+                </div>
                 <h1 className="text-center todo-app__title">Todo app</h1>
                 <div className="row">
                     <div className="small-centered medium-6 large-5 todo-app__wrap">

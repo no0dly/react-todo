@@ -5,7 +5,7 @@ var envFile = require('node-env-file');
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 try {
-    envFile(path.join(__dirname, 'app/', 'config/' + process.env.NODE_ENV + '.env'));
+    envFile(path.join(__dirname, 'config/' + process.env.NODE_ENV + '.env'));
 } catch(e) {
 
 }
@@ -77,5 +77,5 @@ module.exports = {
             path.resolve(__dirname, './node_modules/foundation-sites/scss')
         ]
     },
-    devtool: process.env.NODE_ENV === 'production' ? undefined : 'inline-source-map'
+    devtool: process.env.NODE_ENV === 'production' ? undefined : 'cheap-module-eval-source-map'
 };

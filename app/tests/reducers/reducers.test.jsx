@@ -98,5 +98,26 @@ describe('Reducers',() => {
             expect(res.length).toEqual(1);
             expect(res[0]).toEqual(todos[0]);
         });
+
+        it('Should update uid after login action', () => {
+            var action = {
+                type: 'LOGIN',
+                uid: 123123
+            };
+
+            var res = reducers.authReducer(df({}), df(action));
+
+            expect(res.uid).toEqual(action.uid);
+        });
+
+        it('Should update erase uid after logout', () => {
+            var action = {
+                type: 'LOGOUT'
+            };
+
+            var res = reducers.authReducer(df({}), df(action));
+
+            expect(res).toEqual({});
+        });
     });
 });

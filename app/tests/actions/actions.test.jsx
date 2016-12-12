@@ -92,6 +92,27 @@ describe('Action tests',() => {
         }).catch(done);
     });
 
+    it('Should generate login action object', () => {
+        var action = {
+            type: 'LOGIN',
+            uid: 2321323123
+        }
+
+        var res = actions.login(action.uid);
+
+        expect(res).toEqual(action);
+    });
+
+    it('Should generate logout action object', () => {
+        var action = {
+            type: 'LOGOUT'
+        }
+
+        var res = actions.logout();
+
+        expect(res).toEqual(action);
+    });
+
     describe('Tests with firebase',() => {
         var testTodoRef;
         beforeEach((done) => {
